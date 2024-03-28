@@ -1,0 +1,54 @@
+# Notice the v1beta3 version
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+# some metadata about the template itself
+metadata:
+  name: v1beta3-demo
+  title: Test Action template
+  description: scaffolder v1beta3 template demo
+spec:
+  owner: backstage/techdocs-core
+  type: service
+
+  # these are the steps which are rendered in the frontend with the form input
+  parameters:
+  - title: Fill in some steps
+    required:
+    - name
+    properties:
+      name:
+        title: Name
+        type: string
+        description: Unique name of the component
+        ui:autofocus: true
+        ui:options:
+          rows: 5
+      owner:
+        title: Owner
+        type: string
+        description: Owner of the component
+        ui:field: OwnerPicker
+        ui:options:
+          catalogFilter:
+            kind: Group
+      team:
+        title: Team
+        type: string
+        description: Team of the component
+        default: _CORE_MKP
+        enum:
+        - _CORE_MKP
+        - gp3
+        - io1
+        - io2
+        - sc1
+        - st1
+        - standard
+        enumNames:
+        - 'PPR_CORE'
+        - 'General Purpose SSD (gp3)'
+        - 'Provisioned IOPS (io1)'
+        - 'Provisioned IOPS (io2)'
+        - 'Cold HDD (sc1)'
+        - 'Throughput Optimized HDD (st1)'
+        - 'Magnetic (standard)'
